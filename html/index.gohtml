@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <title>URL Shortener</title>
+    <style>
+        body {
+            background-color: #0e0b16;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 18rem;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .page-header {
+            color: #e7dfdd;
+        }
+        form {
+            color: #e7dfdd;
+            box-sizing: border-box;
+        }
+        input[type="url"] {
+            width: 50%;
+            height: 2rem;
+        }
+        input[type="url"]:focus {
+            border: 3px solid #555;
+        }
+        input[type=button], input[type=submit], input[type=reset] {
+            background-color: #4717fe;
+            border: none;
+            color: white;
+            padding: 1rem;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        a:link {
+            color: #e7dfdd;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #4717fe;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+    </style>
+    <body>
+        <h1 class="page-header">URL Shortener</h1>
+        <form action="/" method="POST">
+            <label for="url">URL: </label>
+            <input id="url" type="url" name="url" required>
+            <input type="submit" value="Shorten">
+        </form>
+
+        {{ if . }}
+            <h2 class="page-header">Uploaded URL</h2>
+            <p>
+                <a href="/short/{{ . }}" target="_blank" title="Shortened URL">Link</a>
+            </p>
+        {{ end }}
+    </body>
+</html>
