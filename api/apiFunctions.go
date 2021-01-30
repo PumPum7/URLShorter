@@ -16,9 +16,13 @@ func shortenURLHomepage(writer http.ResponseWriter, r *http.Request) {
 	} else {
 		_ = r.ParseForm()
 		result := addURL(r.Form["url"][0])
+		url := URL{
+			ShortUrl: result,
+			LongUrl:  r.Form["url"][0],
+		}
+		url.save()
 		t, _ := template.ParseFiles("./html/index.gohtml")
 		_ = t.Execute(writer, result)
-
 	}
 }
 

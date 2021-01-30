@@ -7,12 +7,6 @@ import (
 	"urlShortener/utils"
 )
 
-type URL struct {
-	LongUrl  string `json:"long_url"`
-	ShortUrl string `json:"short_url"`
-	Usage    int    `json:"usage"`
-}
-
 func RedirectURL(w http.ResponseWriter, r *http.Request) {
 	url := mux.Vars(r)
 	redirectURL := database.GetItem(url["url_short"])

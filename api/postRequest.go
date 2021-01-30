@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
-	"urlShortener/database"
 )
 
 func handlePostReq(w http.ResponseWriter, r *http.Request) {
@@ -19,6 +18,7 @@ func handlePostReq(w http.ResponseWriter, r *http.Request) {
 			ShortUrl: result,
 			//Usage:    0,
 		}
+		urlSaved.save()
 		_ = json.NewEncoder(w).Encode(urlSaved)
 	}
 }
@@ -29,8 +29,6 @@ func addURL(url string) string {
 	if !valid {
 		return ""
 	} else {
-		database.SetItem(seq, url)
-
 		return seq
 	}
 }
