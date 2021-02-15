@@ -49,6 +49,7 @@ func HandleRequests() {
 }
 
 func handler(w http.ResponseWriter, _ *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 	// handles calls without an url
 	http.Error(w, "Missing Arguments", http.StatusBadRequest)
 }
